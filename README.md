@@ -78,7 +78,7 @@ Please note that the output of each query or operation is included, showcasing t
    JOIN products p ON o.productId = p.id
    GROUP BY saleMonth, saleYear
    ORDER BY avgtotalSales DESC, saleYear DESC, saleMonth DESC;
-   -- Output: ![1]()
+   -- Output: ![1](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/1.PNG)
 
 2. **Group orders by region.**
     ```sql
@@ -91,7 +91,7 @@ Please note that the output of each query or operation is included, showcasing t
     JOIN users u ON o.userId = u.id
     GROUP BY region
     ORDER BY totalOfAllOrders DESC;
-    -- Output: ![2]()
+    -- Output: ![2](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/2.PNG)
 
 3. **Find customers who generate most sales for the store.**
     ```sql
@@ -111,7 +111,7 @@ Please note that the output of each query or operation is included, showcasing t
     JOIN products ON orders.productId = products.id
     GROUP BY userId
     ORDER BY total_sales DESC;
-    -- Output ![3]()
+    -- Output ![3](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/3.PNG)
 
 4. **Find users who bought the same product.**
      ```sql
@@ -137,7 +137,7 @@ Please note that the output of each query or operation is included, showcasing t
         HAVING COUNT(orders.productId) > 1
     )
     ORDER BY orders.productId ASC;
-    -- Output ![4]()
+    -- Output ![4](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/4.PNG)
 
 5. **Find products usually bought by the same user.**
     ```sql
@@ -179,7 +179,7 @@ Please note that the output of each query or operation is included, showcasing t
         FROM products AS t1
         LEFT JOIN orders AS t2 ON t1.id = t2.productId
         WHERE t2.productId IS NULL;
-        -- Output ![6]()
+        -- Output ![6](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/6.PNG)
 
 7. **Find orders whose total amount is in a certain range.**
     ```sql
@@ -190,7 +190,7 @@ Please note that the output of each query or operation is included, showcasing t
     INNER JOIN products ON orders.productId = products.id
     GROUP BY orders.userId
     HAVING total_sales BETWEEN 500 AND 1000;
-    -- Output ![7]()
+    -- Output ![7](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/7.PNG)
 
 8. **Alter table query.**
     ```sql
@@ -204,14 +204,14 @@ Please note that the output of each query or operation is included, showcasing t
     ADD CONSTRAINT userIdFK FOREIGN KEY (userId)
     REFERENCES users(id)
     ON DELETE CASCADE;
-    -- Output ![8]()
+    -- Output ![8](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/8.PNG)
 
 9. **Find orders made in the last six months.**
     ```sql
     -- Query
     SELECT * FROM orders
     WHERE createdAt > DATE_SUB(NOW(), INTERVAL 6 MONTH);
-    -- Output ![9]()
+    -- Output ![9](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/9.PNG)
 
 10. **Update and delete examples.**
     ```sql
@@ -222,7 +222,7 @@ Please note that the output of each query or operation is included, showcasing t
 
     DELETE FROM orders
     WHERE id = 1;
-    -- Output ![10]()
+    -- Output ![10](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/10.PNG)
 
 11. **Demonstrate Commit/Rollback after CRUD operations.**
     ```sql
@@ -244,7 +244,7 @@ Please note that the output of each query or operation is included, showcasing t
     ROLLBACK TO s1;
     SELECT * FROM orders;
     RELEASE SAVEPOINT s1;
-    -- Output ![11]()
+    -- Output ![11](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/11.PNG)
 
 12. **Order/Group products according to region.**
     ```sql
@@ -258,7 +258,7 @@ Please note that the output of each query or operation is included, showcasing t
     INNER JOIN orders ON users.id = orders.userId
     INNER JOIN products ON orders.productId = products.id
     ORDER BY region ASC;
-    -- Output ![12]()
+    -- Output ![12](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/12.PNG)
 
 13. **Find order total and total amount for users.**
     ```sql
@@ -274,7 +274,7 @@ Please note that the output of each query or operation is included, showcasing t
     INNER JOIN users ON orders.userId = users.id
     GROUP BY orders.userId
     ORDER BY orders.userId;
-    -- Output ![13]()
+    -- Output ![13](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/13.PNG)
 
 14. **Create a cursor to take a backup of the product table.**
     ```sql
@@ -307,7 +307,7 @@ Please note that the output of each query or operation is included, showcasing t
 
     -- Selecting Records from the Backup Table
     SELECT * FROM backup;
-    -- Output ![14]()
+    -- Output ![14](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/14.PNG)
 
 15. **Perform a transaction violating check constraints to check database consistency.**
     ```sql
@@ -315,7 +315,7 @@ Please note that the output of each query or operation is included, showcasing t
     UPDATE products
     SET count = -1
     WHERE id = 2;
-    -- Output ![15]()
+    -- Output ![15](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/15.PNG)
 
 16. **Insert old users into the archive by using trigger before delete.**
     ```sql
@@ -337,7 +337,7 @@ Please note that the output of each query or operation is included, showcasing t
         old.createdAt, old.updatedAt
     );
     delimiter ;
-    -- Output ![16]()
+    -- Output ![16](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/16.PNG)
 
 17. **Trigger error if quantity in ordercarts is greater than count in products. (trigger before insert).**
     ```sql
@@ -355,7 +355,7 @@ Please note that the output of each query or operation is included, showcasing t
     END;
     //
     delimiter ;
-    -- Output ![17]()
+    -- Output ![17](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/17.PNG)
 
 18. **Find repeated purchases.**
     ```sql
@@ -370,7 +370,7 @@ Please note that the output of each query or operation is included, showcasing t
     GROUP BY orders.productId
     HAVING COUNT(orders.productId) > 1
     ORDER BY orders.productId;
-    -- Output ![18]()
+    -- Output ![18](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/18.PNG)
 
 19. **Find products frequently being purchased from a locality.**
     ```sql
@@ -388,7 +388,7 @@ Please note that the output of each query or operation is included, showcasing t
     GROUP BY products.id, region
     HAVING COUNT(products.id) > 1
     ORDER BY region ASC;
-    -- Output ![19]()
+    -- Output ![19](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/19.PNG)
 
 20. **Check inventory at the end of each month.**
     ```sql
@@ -396,7 +396,7 @@ Please note that the output of each query or operation is included, showcasing t
     SELECT b.x - a.x
     FROM inventory b
     INNER JOIN inventory a ON b.year = a.year AND b.month = a.month - 1;
-    -- Output ![20]()
+    -- Output ![20](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/20.PNG)
 
 21. **Create a view for inventory.**
     ```sql
@@ -408,7 +408,7 @@ Please note that the output of each query or operation is included, showcasing t
     FROM products
     GROUP BY YEAR(createdAt), MONTH(createdAt);
     SELECT * FROM inventory;
-    -- Output ![21]()
+    -- Output ![21](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/21.PNG)
 
 22. **Trigger: update count in products after insertion in orders.**
     ```sql
@@ -419,7 +419,7 @@ Please note that the output of each query or operation is included, showcasing t
     UPDATE products
     SET count = count - new.quantity
     WHERE id = new.productId;
-    -- Output ![22]()
+    -- Output ![22](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/22.PNG)
 
 23. **Create results of joining users and orders to find active orders as a view.**
     ```sql
@@ -431,7 +431,7 @@ Please note that the output of each query or operation is included, showcasing t
     FROM orders o, users u
     WHERE orderActive = 1 AND o.userId = u.id;
     SELECT * FROM active_orders;
-    -- Output ![23]()
+    -- Output ![23](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/23.PNG)
 
 24. **Trigger update of active_orders view when an order is delivered.**
     ```sql
@@ -447,7 +447,7 @@ Please note that the output of each query or operation is included, showcasing t
     END;
     //
     delimiter ;
-    -- Output ![24]()
+    -- Output ![24](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/24.PNG)
 
 25. **Join products and users to see who purchased what items.**
     ```sql
@@ -464,7 +464,7 @@ Please note that the output of each query or operation is included, showcasing t
     INNER JOIN orders ON users.id = orders.userId
     INNER JOIN products ON orders.productId = products.id
     ORDER BY orders.userId;
-    -- Output ![25]()
+    -- Output ![25](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/25.PNG)
 
 26. **Group orders by date purchased.**
     ```sql
@@ -484,7 +484,7 @@ Please note that the output of each query or operation is included, showcasing t
     INNER JOIN products ON orders.productId = products.id
     ORDER BY YEAR(orders.createdAt) DESC,
              MONTH(orders.createdAt) DESC;
-    -- Output ![26]()
+    -- Output ![26](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/26.PNG)
 
 27. **Group orders by “is active” in ordercarts using active_orders view.**
     ```sql
@@ -493,7 +493,7 @@ Please note that the output of each query or operation is included, showcasing t
     FROM active_orders
     GROUP BY region
     ORDER BY region;
-    -- Output ![27]()
+    -- Output ![27](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/27.PNG)
 
 28. **Group orders created at the same date.**
     ```sql
@@ -517,7 +517,7 @@ Please note that the output of each query or operation is included, showcasing t
     AND o1.userId <> o2.userId
     GROUP BY o1.createdAt
     ORDER BY o1.createdAt;
-    -- Output ![28]()
+    -- Output ![28](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/28.PNG)
 
 ## Conclusion
 
