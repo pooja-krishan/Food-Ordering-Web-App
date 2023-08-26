@@ -175,6 +175,8 @@ Output
         )
     ORDER BY
         orders.userId ASC;
+Output 
+![6](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/5.PNG)
 
 6. **Find products not being bought by customers.**
     ```sql
@@ -328,8 +330,6 @@ Output
     UPDATE products
     SET count = -1
     WHERE id = 2;
-Output 
-![15](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/15.PNG)
 
 16. **Insert old users into the archive by using trigger before delete.**
     ```sql
