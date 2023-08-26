@@ -7,7 +7,7 @@ This project involves working with a shopping cart database to perform various q
 ## Schema Definitions
 
 The schema includes three main tables: `Users`, `Products`, and `Orders`. Additional tables, `persons_archive` and `backup`, are also part of the schema.
-Output 
+
 ![Shopping_Cart](https://github.com/pooja-krishan/Food-Ordering-Web-App/blob/main/fig/Shopping_Cart.png)
 
 ### Users Table
